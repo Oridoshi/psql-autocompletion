@@ -28,7 +28,7 @@
             "$$ LANGUAGE plpgsql;",
             "",
             "CREATE TRIGGER nomTrigger",
-            "AFTER INSERT OR UPDATE OR DELETE ON Table",
+            "AFTER INSERT OR UPDATE OR DELETE ON /*Table*/",
             "FOR EACH STATEMENT --( ligne modifier ) ou ROW ( chaque ligne même non modifier )",
             "EXECUTE PROCEDURE nomFonction();"
         ],
@@ -176,15 +176,23 @@
     },
 
     "Génère RAISE NOTICE": {
-        "prefix": "raiNot",
+        "prefix": "rainot",
         "body": [
             "RAISE NOTICE '%s', mess; -- Utiliser '%s' pour insérée la variable mess dans le message du raise notice"
         ],
         "description": "Génère un RAISE NOTICE"
     },
 
+    "Génère RAISE EXEPTION": {
+        "prefix": "raiexep",
+        "body": [
+            "RAISE EXEPTION \"MESSAGE ERREUR\";"
+        ],
+        "description": "Génère un RAISE EXEPTION"
+    },
+
     "Génère FOR LOOP": {
-        "prefix": "forLoop",
+        "prefix": "forloop",
         "body": [
             "FOR ( /*var*/ IN SELECT /*arg*/ From /table*/ Where /*condition*/ )",
             "    LOOP",
@@ -195,7 +203,7 @@
     },
 
     "Génère TYPE": {
-        "prefix": "creaType",
+        "prefix": "creatype",
         "body": [
             "CREATE TYPE nomType AS(/*var1 type1, var2 type2, ...*/)"
         ],
