@@ -1,0 +1,229 @@
+{
+    "Génère une Function": {
+        "prefix": "function",
+        "body": [
+            "CREATE OR REPLACE FUNCTION nomFonction(/*paramettre fonction*/) RETURNS /*faire info_function pour plus d'info sur le returns*/ AS",
+            "$$",
+            "DECLARE",
+            "    -- Variables et declarations ici",
+            "BEGIN",
+            "    -- Corps de la Fonction ici",
+            "END;",
+            "$$ LANGUAGE SQL; -- ne pas oublier de mettre PLPGSQL si c'est une fonction PLPGSQL"
+        ],
+        "description": "Génère une Fonction SQL"
+    },
+
+    "Génère un Trigger": {
+        "prefix": "trigALL",
+        "body": [
+            "CREATE FUNCTION nomFonction(/*paramettre fonction*/) RETURNS TRIGGER AS",
+            "$$",
+            "DECLARE",
+            "    -- Variables et declarations ici",
+            "BEGIN",
+            "    -- Corps de la Fonction ici",
+            "    RETURN NULL;",
+            "END;",
+            "$$ LANGUAGE plpgsql;",
+            "",
+            "CREATE TRIGGER nomTrigger",
+            "AFTER INSERT OR UPDATE OR DELETE ON Table",
+            "FOR EACH STATEMENT --( ligne modifier ) ou ROW ( chaque ligne même non modifier )",
+            "EXECUTE PROCEDURE nomFonction();"
+        ],
+        "description": "Génère un Trigger SQL"
+    },
+
+    "Génère l'entête": {
+        "prefix": "entete",
+        "body": [
+            "---------------------------------------------------------",
+            "-- CAS : ????????????                                  --",
+            "-- Auteur : Dunet Tom                                  --",
+            "-- Date : ???????????                                  --",    
+            "-- Objectif : ???????                                  --",
+            "---------------------------------------------------------"
+        ],
+        "description": "Génère l'entête"
+    },
+
+    "Génère info fonction": {
+        "prefix": "info_fonction",
+        "body": [
+            "-----------------------------------------------------------------------------------",
+            "--                                     TESTS                                     --",
+            "-----------------------------------------------------------------------------------",
+            "--                     Select * From NOM_FONCTION(PARAMETTRE)                    --",
+            "--                      Permet un affichage comme une table                      --",
+            "-----------------------------------------------------------------------------------",
+            "--                        Select NOM_FONCTION(PARAMETTRE)                        --",
+            "--              Affichage avec seulement avec le nom de la fonction              --",
+            "-----------------------------------------------------------------------------------",
+            "",
+            "",
+            "-----------------------------------------------------------------------------------",
+            "--                                    Returns                                    --",
+            "-----------------------------------------------------------------------------------",
+            "-- Pour les nombre il y a :                                                      --",
+            "--    • int                                                                      --",
+            "--    • numeric                                                                  --",
+            "--    • bigint                                                                   --",
+            "-----------------------------------------------------------------------------------",
+            "-- Pour les chaine de caractère il y a :                                         --",
+            "--    • varchar                                                                  --",
+            "-----------------------------------------------------------------------------------",
+            "--              Pour tout les colonne d'une table ont utilise setof              --",
+            "--               si ont fait un setOf Produit le résultat seras le               --",
+            "--              même que si l'on avait fait un select * from Produit             --",
+            "--                                                                               --",
+            "--              Il est aussi possible de créer un type avec la ligne             --",
+            "--               CREATE TYPE nomType AS(var1 type1, var2 type2,...)              --",
+            "--                            et de setOf ce type crée                           --",
+            "-----------------------------------------------------------------------------------",
+            "--              table.var%TYPE vas tout seul aller chercher le type              --",
+            "--                  et le mettre comme type de la chose renvoyer                 --",
+            "-----------------------------------------------------------------------------------",
+            "",
+            "",
+            "-----------------------------------------------------------------------------------",
+            "--                                    Exemple                                    --",
+            "-----------------------------------------------------------------------------------",
+            "-- Create or Replace Function Client_Coul( numcli int, coul varchar) returns int --",
+            "-- as                                                                            --",
+            "-- $$                                                                            --",
+            "--     Select count(p.*)                                                         --",
+            "--     from   Achat a join Produit p on a.np = p.np                              --",
+            "--     where  ncli = numcli and p.coul = Client_Coul.coul                        --",
+            "-- $$ LANGUAGE SQL;                                                              --",
+            "-----------------------------------------------------------------------------------"
+        ],
+        "description": "Génère les info pour utiliser les fonction"
+    },
+
+    "Génère info PSQL": {
+        "prefix": "info_psql",
+        "body": [
+            "---------------------------------------------------------",
+            "--                 Affichage info psql                 --",
+            "---------------------------------------------------------",
+            "--  \\dt permet d'afficher les table    crée sur psql   --",
+            "--  \\df permet d'afficher les fonction crée sur psql   --",
+            "--  \\dv permet d'afficher les vue      crée sur psql   --",
+            "---------------------------------------------------------"
+        ],
+        "description": "Génère les info pour utiliser les fonction"
+    },
+
+    "Génère select complet": {
+        "prefix": "selcom",
+        "body": [
+            "SELECT   /* * (selection tout les tuple de la table) ou nom colonne tables suivi par une \",\" (arg1, arg2, ...)*/",
+            "FROM     nomTable",
+            "WHERE    /*Condition de la demande*/",
+            "GROUP BY /*Groupe en fonction de l'attribue passer*/",
+            "HAVING   /*Condition de la demande mais utilisant des fonction comme le COUNT() ou le MAX()*/;"
+        ],
+        "description": "Génère un select complet"
+    },
+
+    "Génère select join": {
+        "prefix": "seljoi",
+        "body": [
+            "SELECT * /*(selection tout les tuple de la table) ou nom colonne tables suivi par une \",\" (arg1, arg2, ...)*/",
+            "FROM   nomTable1 nt1 JOIN nomTable2 nt2 ON nt1.id = nt2.id"
+        ],
+        "description": "Génère un select avec une jointure"
+    },
+
+    "Génère where IN": {
+        "prefix": "wherein",
+        "body": [
+            "WHERE arg IN (SELECT typeArg",
+            "              FROM   nomTable",
+            "              WHERE  /*condition*/);"
+        ],
+        "description": "Génère where avec un IN"
+    },
+
+    "Génère vue": {
+        "prefix": "view",
+        "body": [
+            "CREATE OR REPLACE nomVue AS",
+            "SELECT  *",
+            "FROM    nomTable",
+            "WHERE    ",
+            "GROUP BY ",
+            "HAVING   ;"
+        ],
+        "description": "Génère une vue"
+    },
+
+    "Génère Fonction RAISE NOTICE": {
+        "prefix": "funRaiNot",
+        "body": [
+            "CREATE OR REPLACE FUNCTION nomFonction(mess varchar) RETURNS void AS",
+            "$$",
+            "BEGIN",
+            "    RAISE NOTICE '%s', mess; -- Utiliser '%s' pour insérée la variable mess dans le message du raise notice",
+            "    RETURN NULL;",
+            "END;",
+            "$$ LANGUAGE plpgsql;",
+            "",
+            "SELECT nomFonction('MESSAGE A AFFICHER'); -- Utiliser SELECT pour appeler la fonction ou EXECUTE celon le besoin"
+        ],
+        "description": "Génère une Fonction RAISE NOTICE"
+    },
+
+    "Génère RAISE NOTICE": {
+        "prefix": "raiNot",
+        "body": [
+            "RAISE NOTICE '%s', mess; -- Utiliser '%s' pour insérée la variable mess dans le message du raise notice"
+        ],
+        "description": "Génère un RAISE NOTICE"
+    },
+
+    "Génère FOR LOOP": {
+        "prefix": "forLoop",
+        "body": [
+            "FOR ( /*var*/ IN SELECT /*arg*/ From /table*/ Where /*condition*/ )",
+            "    LOOP",
+            "        /*code éxécuter par la boucle*/",
+            "    END LOOP;"
+        ],
+        "description": "Génère une boucle for"
+    },
+
+    "Génère TYPE": {
+        "prefix": "creaType",
+        "body": [
+            "CREATE TYPE nomType AS(/*var1 type1, var2 type2, ...*/)"
+        ],
+        "description": "Génère la ligne pour crée un nouveaux type"
+    },
+
+    "Génère Insert Into": {
+        "prefix": "insint",
+        "body": [
+            "SELECT /*arg*/ FROM /*table*/ WHERE /*condition*/ INTO /*var*/"
+        ],
+        "description": "Génère la ligne pour faire un INSERT INTO pour mettre dans une variable"
+    },
+
+    "Génère FOUND": {
+        "prefix": "found",
+        "body": [
+            "-- Vérification si la chose demander existe",
+            "SELECT /*arg1, arg2 , ...*/ INTO /*var1, var2 , ...*/ FROM /*Table*/ WHERE /*Condition*/",
+            "",
+            "IF FOUND THEN",
+            "    -- c'est trouver",
+            "    RAISE NOTICE 'message';",
+            "ELSE",
+            "    -- ce n'est pas trouver",
+            "    RAISE NOTICE 'message de pas trouver';",
+            "END IF;"
+        ],
+        "description": "Génère une demande found"
+    }
+}
