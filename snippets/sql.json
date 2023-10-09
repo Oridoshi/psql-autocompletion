@@ -115,16 +115,28 @@
         "description": "Génère les info pour utiliser les fonction"
     },
 
-    "Génère select complet": {
-        "prefix": "selcom",
+    "Génère info select complet": {
+        "prefix": "info_selcom",
         "body": [
             "SELECT   /* * (selection tout les tuple de la table) ou nom colonne tables suivi par une \",\" (arg1, arg2, ...)*/",
-            "FROM     nomTable",
+            "FROM     /*nomTable*/",
             "WHERE    /*Condition de la demande*/",
             "GROUP BY /*Groupe en fonction de l'attribue passer*/",
             "HAVING   /*Condition de la demande mais utilisant des fonction comme le COUNT() ou le MAX()*/;"
         ],
-        "description": "Génère un select complet"
+        "description": "Génère les info d'un select complet"
+    },
+
+    "Génère select complet": {
+        "prefix": "selcom",
+        "body": [
+            "SELECT   ",
+            "FROM     ",
+            "WHERE    ",
+            "GROUP BY ",
+            "HAVING   ;"
+        ],
+        "description": "Génère les info d'un select complet"
     },
 
     "Génère select join": {
@@ -139,8 +151,8 @@
     "Génère where IN": {
         "prefix": "wherein",
         "body": [
-            "WHERE arg IN (SELECT typeArg",
-            "              FROM   nomTable",
+            "WHERE /*arg*/ IN (SELECT /*typeArg*/",
+            "              FROM   /*nomTable*/",
             "              WHERE  /*condition*/);"
         ],
         "description": "Génère where avec un IN"
@@ -150,8 +162,8 @@
         "prefix": "view",
         "body": [
             "CREATE OR REPLACE nomVue AS",
-            "SELECT  *",
-            "FROM    nomTable",
+            "SELECT   ",
+            "FROM     ",
             "WHERE    ",
             "GROUP BY ",
             "HAVING   ;"
