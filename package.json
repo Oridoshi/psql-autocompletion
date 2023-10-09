@@ -3,7 +3,7 @@
   "publisher": "TomDunet",
   "displayName": "PSQL Autocompletion",
   "description": "Autocompletion de PSQL",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "engines": {
     "vscode": "^1.82.0"
   },

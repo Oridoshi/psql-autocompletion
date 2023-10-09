@@ -142,8 +142,8 @@
     "Génère select join": {
         "prefix": "seljoi",
         "body": [
-            "SELECT * /*(selection tout les tuple de la table) ou nom colonne tables suivi par une \",\" (arg1, arg2, ...)*/",
-            "FROM   nomTable1 nt1 JOIN nomTable2 nt2 ON nt1.id = nt2.id"
+            "SELECT ",
+            "FROM   /*nomTable1 nt1*/ JOIN /*nomTable2 nt2*/ ON /*nt1.id*/ = /*nt2.id*/"
         ],
         "description": "Génère un select avec une jointure"
     },
