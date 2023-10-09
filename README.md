@@ -46,7 +46,7 @@ Ce snippet génère une requête SELECT SQL complète avec clauses FROM, WHERE, 
 
 - Utilisation du préfixe : `selcom`
 
-...et bien plus encore !
+...et bien [plus encore](./data/info/info.md) !
 
 ## Installation
 
