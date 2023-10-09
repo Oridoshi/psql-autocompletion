@@ -213,7 +213,7 @@
     "Génère Insert Into": {
         "prefix": "insint",
         "body": [
-            "SELECT /*arg*/ FROM /*table*/ WHERE /*condition*/ INTO /*var*/"
+            "SELECT /*arg*/ INTO /*var*/ FROM /*table*/ WHERE /*condition*/"
         ],
         "description": "Génère la ligne pour faire un INSERT INTO pour mettre dans une variable"
     },
