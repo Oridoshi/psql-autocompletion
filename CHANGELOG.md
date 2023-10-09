@@ -1,6 +1,6 @@
 # Changelog
 
-## [Version 1.0.0] - 2023-10-01
+## [Version 1.0.0] - 09-10-2023
 - Ajout de la fonctionnalité "Générer une Fonction SQL".
 - Ajout de la fonctionnalité "Générer un Trigger SQL".
 - Ajout de la fonctionnalité "Générer une Entête".
