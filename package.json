@@ -1,15 +1,15 @@
 {
-  "name": "psql-autocompletion",
+  "name": "psql-autocompletions",
   "publisher": "TomDunet",
-  "displayName": "PSQL Autocompletion",
-  "description": "Autocompletion de PSQL",
+  "displayName": "PSQL Autocomplétions",
+  "description": "Autocomplétions de PSQL",
   "version": "1.0.5",
   "engines": {
     "vscode": "^1.82.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Oridoshi/psql-autocompletion"
+    "url": "https://github.com/Oridoshi/psql-autocompletions"
   },
   "categories": [
     "Other"
