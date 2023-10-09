@@ -1,9 +1,9 @@
 {
   "name": "psql-autocompletion",
-  "publisher": "Ori",
+  "publisher": "TomDunet",
   "displayName": "PSQL Autocompletion",
   "description": "Autocompletion de PSQL",
-  "version": "0.0.2",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.82.0"
   },
