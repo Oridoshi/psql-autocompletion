@@ -16,12 +16,6 @@ Ce snippet génère un squelette pour créer une fonction SQL.
 
 - Utilisation du préfixe : `function`
 
-### Générer un Trigger SQL
-
-Ce snippet génère un squelette pour créer un déclencheur SQL.
-
-- Utilisation du préfixe : `trigALL`
-
 ### Générer une Entête
 
 Ce snippet génère un en-tête de commentaire pour vos fichiers SQL.
