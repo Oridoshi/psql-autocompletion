@@ -1,5 +1,16 @@
 # Changelog
 
+## [Version 1.1.0] - 13-10-2023
+- Ajout de la fonctionnalité "Générer un Trigger Insertion SQL".
+- Ajout de la fonctionnalité "Générer un Trigger Update SQL".
+- Ajout de la fonctionnalité "Générer un Trigger Delete SQL".
+- Ajout de la fonctionnalité "Générer une Table SQL".
+- Ajout de la fonctionnalité "Générer des Informations sur la Création de Table SQL".
+- Ajout de la fonctionnalité "Générer des Informations sur les Triggers".
+- Suppression du snippet "trigALL".
+- Mise à jour de la détection des fichiers : les fichiers ".psql" sont désormais pris en compte avec l'extension.
+
+
 ## [Version 1.0.0] - 09-10-2023
 - Ajout de la fonctionnalité "Générer une Fonction SQL".
 - Ajout de la fonctionnalité "Générer un Trigger SQL".

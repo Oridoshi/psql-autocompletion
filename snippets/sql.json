@@ -14,8 +14,8 @@
         "description": "Génère une Fonction SQL"
     },
 
-    "Génère un Trigger": {
-        "prefix": "trigALL",
+    "Génère un Trigger Insertion": {
+        "prefix": "trigins",
         "body": [
             "CREATE FUNCTION nomFonction(/*paramettre fonction*/) RETURNS TRIGGER AS",
             "$$",
@@ -28,11 +28,66 @@
             "$$ LANGUAGE plpgsql;",
             "",
             "CREATE TRIGGER nomTrigger",
-            "AFTER INSERT OR UPDATE OR DELETE ON /*Table*/",
+            "AFTER INSERT ON /*Table*/",
             "FOR EACH STATEMENT --( ligne modifier ) ou ROW ( chaque ligne même non modifier )",
             "EXECUTE PROCEDURE nomFonction();"
         ],
-        "description": "Génère un Trigger SQL"
+        "description": "Génère un Trigger Insertion SQL"
+    },
+
+    "Génère un Trigger Update": {
+        "prefix": "trigupda",
+        "body": [
+            "CREATE FUNCTION nomFonction(/*paramettre fonction*/) RETURNS TRIGGER AS",
+            "$$",
+            "DECLARE",
+            "    -- Variables et declarations ici",
+            "BEGIN",
+            "    -- Corps de la Fonction ici",
+            "    RETURN NULL;",
+            "END;",
+            "$$ LANGUAGE plpgsql;",
+            "",
+            "CREATE TRIGGER nomTrigger",
+            "BEFORE UPDATE ON /*Table*/",
+            "FOR EACH STATEMENT --( ligne modifier ) ou ROW ( chaque ligne même non modifier )",
+            "EXECUTE PROCEDURE nomFonction();"
+        ],
+        "description": "Génère un Trigger Update SQL"
+    },
+
+    "Génère un Trigger Delete": {
+        "prefix": "trigdel",
+        "body": [
+            "CREATE FUNCTION nomFonction(/*paramettre fonction*/) RETURNS TRIGGER AS",
+            "$$",
+            "DECLARE",
+            "    -- Variables et declarations ici",
+            "BEGIN",
+            "    -- Corps de la Fonction ici",
+            "    RETURN NULL;",
+            "END;",
+            "$$ LANGUAGE plpgsql;",
+            "",
+            "CREATE TRIGGER nomTrigger",
+            "BEFORE DELETE ON /*Table*/",
+            "FOR EACH STATEMENT --( ligne modifier ) ou ROW ( chaque ligne même non modifier )",
+            "EXECUTE PROCEDURE nomFonction();"
+        ],
+        "description": "Génère un Trigger Delete SQL"
+    },
+
+    "Génère une Table SQL": {
+        "prefix": "createtable",
+        "body": [
+            "CREATE TABLE nomTable (",
+            "    id SERIAL PRIMARY KEY,",
+            "    /*var1 type1*/,",
+            "    /*var2 type2*/,",
+            "    /*var3 type3*/",
+            ");"
+        ],
+        "description": "Génère une déclaration de création de table SQL"
     },
 
     "Génère l'entête": {
@@ -46,6 +101,104 @@
             "---------------------------------------------------------"
         ],
         "description": "Génère l'entête"
+    },
+
+    "Génère des Informations sur la Création de Table SQL": {
+        "prefix": "info_CreationTable",
+        "body": [
+            "-----------------------------------------------------------------------------------",
+            "--                  INFORMATIONS SUR LA CRÉATION DE TABLE                        --",
+            "-----------------------------------------------------------------------------------",
+            "--",
+            "-- Lors de la création d'une table en SQL, vous pouvez spécifier divers éléments :",
+            "--",
+            "-- 1. Liste des colonnes de la table avec leurs noms et types de données.",
+            "--    Exemple :",
+            "--    nomColonne1 TYPE_DE_DONNÉES,",
+            "--    nomColonne2 TYPE_DE_DONNÉES,",
+            "--    ...",
+            "--",
+            "-- 2. Contraintes de clé primaire, clé étrangère, contraintes uniques, etc.",
+            "--    Exemple :",
+            "--    PRIMARY KEY (nomColonne1),",
+            "--    FOREIGN KEY (nomColonne2) REFERENCES autreTable (colonneRéférencée),",
+            "--    UNIQUE (nomColonne3),",
+            "--    ...",
+            "--",
+            "-- 3. Options de colonne telles que NOT NULL, DEFAULT, CHECK, etc.",
+            "--    Exemple :",
+            "--    nomColonne4 TYPE_DE_DONNÉES NOT NULL,",
+            "--    nomColonne5 TYPE_DE_DONNÉES DEFAULT 'valeurParDéfaut',",
+            "--    nomColonne6 TYPE_DE_DONNÉES CHECK (condition),",
+            "--    ...",
+            "--",
+            "-- 4. Options de table comme le schéma, l'héritage, le stockage, etc.",
+            "--    Exemple :",
+            "--    TABLESPACE espaceStockage,",
+            "--    INHERITS autreTable,",
+            "--    ...",
+            "--",
+            "-- 5. Options de contrainte de table pour spécifier des règles de vérification.",
+            "--    Exemple :",
+            "--    CHECK (conditionDeVérification),",
+            "--    ...",
+            "--",
+            "-- 6. Commentaires pour documenter la table et ses colonnes.",
+            "--    Exemple :",
+            "--    COMMENT ON TABLE nomTable IS 'Description de la table';",
+            "--    COMMENT ON COLUMN nomTable.nomColonne1 IS 'Description de la colonne';",
+            "--    ...",
+            "--",
+            "-----------------------------------------------------------------------------------"
+        ],
+        "description": "Explique les options de création de table SQL"
+    },
+
+    "Génère un Trigger et Utilisation": {
+        "prefix": "info_trigger",
+        "body": [
+            "-----------------------------------------------------------------------------------",
+            "--                          CRÉATION D'UN TRIGGER                                --",
+            "-----------------------------------------------------------------------------------",
+            "--",
+            "-- 1. Créez d'abord une fonction PL/pgSQL qui définira le comportement du trigger.",
+            "--",
+            "-- CREATE FUNCTION nomFonction(/*paramètres*/) RETURNS TRIGGER AS",
+            "-- $$",
+            "-- BEGIN",
+            "--     -- Corps de la Fonction ici",
+            "--     -- Utilisez les variables OLD et NEW pour accéder aux anciennes et nouvelles valeurs",
+            "--     -- RETURN NEW;  -- Par exemple, pour un trigger BEFORE INSERT qui modifie les données",
+            "-- END;",
+            "-- $$ LANGUAGE plpgsql;",
+            "--",
+            "-- 2. Créez le trigger lui-même en spécifiant l'événement, le moment et la table cible.",
+            "--",
+            "-- CREATE TRIGGER nomTrigger",
+            "-- AFTER INSERT OR UPDATE ON nomTable",
+            "-- FOR EACH ROW",
+            "-- EXECUTE PROCEDURE nomFonction();",
+            "--",
+            "-- Vous pouvez utiliser \"BEFORE\" ou \"AFTER\" en fonction de votre besoin",
+            "-- \"DELETE\", \"UPDATE\" et \"INSERT\" en fonction aussi en fonction de votre besoin",
+            "-- Vous pouvez ajouter \"OR\" si vous vouler que ce ce face sur plusieur action",
+            "--",
+            "-----------------------------------------------------------------------------------",
+            "--                          UTILISATION DU TRIGGER                               --",
+            "-----------------------------------------------------------------------------------",
+            "--",
+            "-- Pour utiliser le trigger, insérez ou mettez à jour des données dans nomTable.",
+            "-- Le trigger s'exécutera automatiquement après chaque opération d'INSERT ou UPDATE.",
+            "--",
+            "-- Exemple d'insertion de données :",
+            "--",
+            "-- INSERT INTO nomTable (/*colonnes*/) VALUES (/*valeurs*/);",
+            "--",
+            "-- Le trigger nomTrigger sera déclenché après cette opération, exécutant la fonction nomFonction.",
+            "--",
+            "-----------------------------------------------------------------------------------"
+        ],
+        "description": "Génère les info pour faire des trigger"
     },
 
     "Génère info fonction": {
@@ -228,6 +381,32 @@
             "SELECT /*arg*/ INTO /*var*/ FROM /*table*/ WHERE /*condition*/"
         ],
         "description": "Génère la ligne pour faire un INSERT INTO pour mettre dans une variable"
+    },
+
+    "Génère une requête DELETE": {
+        "prefix": "del",
+        "body": [
+            "DELETE FROM /*nomTable*/ WHERE /*condition*/;"
+        ],
+        "description": "Génère une requête DELETE SQL"
+    },
+
+    "Génère des clauses ORDER BY": {
+        "prefix": "orderby",
+        "body": [
+            "ORDER BY /*colonne1*/, /*colonne2*/ /*ordre (ASC ou DESC)*/;"
+        ],
+        "description": "Génère des clauses ORDER BY SQL"
+    },
+
+    "Génère une requête INSERT INTO": {
+        "prefix": "insertinto",
+        "body": [
+            "INSERT INTO /*nomTable*/ (/*colonnes*/) VALUES" ,
+            "(/*valeur*/)",
+            "(/*valeur*/);"
+        ],
+        "description": "Génère une requête INSERT INTO SQL"
     },
 
     "Génère FOUND": {

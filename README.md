@@ -54,7 +54,7 @@ Pour installer l'extension PSQL Autocompletion, suivez ces étapes :
 
 1. Ouvrez Visual Studio Code.
 2. Accédez à la vue des extensions.
-3. Recherchez "PSQL Autocompletion".
+3. Recherchez "PSQL Autocomplétions".
 4. Cliquez sur "Installer" pour installer l'extension.
 
 ## Utilisation
