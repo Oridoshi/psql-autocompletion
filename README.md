@@ -73,4 +73,4 @@ Si vous appréciez l'extension, veuillez lui attribuer une note de 5⭐. Et, si 
 
 ---
 
-Développé par [Dunet Tom](https://github.com/Oridoshi), [Envoyer un e-mail](mailto:tomdunet.contact@gmail.com)
+Développé par [Dunet Tom](https://github.com/Oridoshi)
