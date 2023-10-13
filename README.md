@@ -67,4 +67,6 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE.md) pour plus 
 
 ---
 
+Si vous appréciez l'extension, veuillez lui attribuer une note de 5⭐. Et, si vous vous sentez particulièrement gentil aujourd'hui, laissez également un commentaire aimable : [Évaluez cette extension](https://marketplace.visualstudio.com/items?itemName=TomDunet.psql-autocompletions&ssr=false#review-details).
+
 Développé par [Dunet Tom](https://github.com/Oridoshi)
