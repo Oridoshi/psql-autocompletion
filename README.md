@@ -66,6 +66,7 @@ Les contributions sont les bienvenues ! Si vous souhaitez contribuer à l'améli
 Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE.md) pour plus de détails.
 
 ---
+Si vous avez des suggestions, veuillez ne pas donner une mauvaise évaluation à l'extension. Au lieu de cela, [ouvrez une demande](https://github.com/Oridoshi/psql-autocompletions/issues) sur la page du projet Github, et j'essaierai de l'ajouter lorsque cela sera possible.
 
 Si vous appréciez l'extension, veuillez lui attribuer une note de 5⭐. Et, si vous vous sentez particulièrement gentil aujourd'hui, laissez également un commentaire aimable : [Évaluez cette extension](https://marketplace.visualstudio.com/items?itemName=TomDunet.psql-autocompletions&ssr=false#review-details).
 
