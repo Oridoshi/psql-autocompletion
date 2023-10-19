@@ -1,6 +1,6 @@
 ## Fonctionnalités de l'Extension PSQL Autocompletion
 
-L'extension PSQL Autocompletion pour Visual Studio Code offre une variété de snippets SQL pour faciliter le développement et l'écriture de requêtes SQL. Voici un aperçu des fonctionnalités disponibles :
+L'extension PSQL Autocompletion pour Visual Studio Code offre une variété de snippets SQL pour faciliter le développement et l'écriture de requêtes SQL. Voici les fonctionnalités disponibles :
 
 ### Génère une Fonction SQL
 
