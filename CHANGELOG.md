@@ -1,5 +1,8 @@
 # Changelog
 
+## [Version 1.1.0] - 23-10-2023
+- Mise à jour du snippet info_Trigger.
+
 ## [Version 1.1.0] - 13-10-2023
 - Ajout de la fonctionnalité "Générer un Trigger Insertion SQL".
 - Ajout de la fonctionnalité "Générer un Trigger Update SQL".
